@@ -1,0 +1,29 @@
+<div *ngIf="isLoading === true">
+  <div role="status" class="container my-2 d-flex justify-content-center">
+    <mat-spinner diameter="20"></mat-spinner>
+  </div>
+</div>
+
+<div *ngIf="isLoading === false" class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1>{{ computer.brand }} <span class="badge badge-primary">{{ computer.sellPrice }} €</span></h1>
+  </div>
+  <div class="container d-flex justify-content-center">
+    <ul class="list-group w-50">
+      <li class="list-group-item">{{ computer.model }}</li>
+      <li class="list-group-item">{{ computer.type }}</li>
+      <li class="list-group-item">{{ computer.category }}</li>
+      <li class="list-group-item">{{ computer.dateEnterStock | date  }}</li>
+    </ul>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="rounded my-2 p-2 border text-white bg-primary w-25">
+      <p>Prix achat:</p>
+      <span class="badge badge-pill badge-warning">{{ computer.buyPrice }} €</span>
+    </div>
+    <div class="rounded my-2 p-2 border text-white bg-warning w-25">
+      <p>Marge</p>
+      <span class="badge badge-pill badge-success">{{ calculMarge() | number }} €</span>
+    </div>
+  </div>
+</div>

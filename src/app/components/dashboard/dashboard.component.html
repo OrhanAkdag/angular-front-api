@@ -1,0 +1,78 @@
+<div *ngIf="isLoading === true">
+  <div role="status" class="container my-2 d-flex justify-content-center">
+    <mat-spinner diameter="20"></mat-spinner>
+  </div>
+</div>
+
+
+<div *ngIf="isLoading === false" class="text-center my-3">
+  <h1 *ngIf="computers.length > 1">{{ computers.length }} Ordinateurs en stock</h1>
+  <h1 *ngIf="computers.length === 1 ">{{ computers.length }} Ordinateur en stock</h1>
+  <h1 *ngIf="computers.length === 0 ">Il n'y a pas d'ordinateur en stock</h1>
+</div>
+
+<div class="container my-2">
+  <table *ngIf="isLoading === false" class="table table-striped shadow">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date entrée</th>
+        <th scope="col">Modèle</th>
+        <th scope="col">Marque</th>
+        <th scope="col">Type</th>
+        <th scope="col">Categorie</th>
+        <th scope="col">Prix de vente</th>
+        <th scope="col">Prix d'achat</th>
+        <th scope="col">Marge</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let computer of computers">
+        <th scope="row" class="lineComputer">{{computer.id}}</th>
+        <td>{{computer.dateEnterStock | date: 'shortDate'}}</td>
+        <td>{{computer.model}}</td>
+        <td>{{computer.brand}}</td>
+        <td>{{computer.type}}</td>
+        <td>{{computer.category}}</td>
+        <td>{{computer.sellPrice}} €</td>
+        <td>{{computer.buyPrice}} €</td>
+        <td>{{ calculMarge(computer) | number }} €</td>
+        <td>
+          <a mat-button
+             [routerLink]="['/computers/', computer.id]"
+             class="text-primary mx-2">
+             <fa-icon [icon]="faEye"></fa-icon>
+          </a>
+          <a mat-button
+             [routerLink]="['/edit', computer.id]"
+             class="text-warning mx-2">
+             <fa-icon [icon]="faEdit"></fa-icon>
+          </a>
+          <a mat-button
+             class="text-danger mx-2"
+             (click)="openModal(template)">
+             <fa-icon [icon]="faTrash"></fa-icon>
+          </a>
+          <!-- Modal -->
+        <ng-template #template>
+          <div class="modal-body text-center">
+            <p>Voulez-vous confirmer cette action?</p>
+            <button type="button"
+                    class="btn btn-default mx-2"
+                    id="deleteComputer"
+                    (click)="deleteComputer(computer)"
+                    [disabled]='clicked === true'>
+                    Oui
+            </button>
+            <button type="button"
+                    class="btn btn-primary mx-2"
+                    (click)="decline()"
+                    [disabled]='clicked === true'>Non</button>
+          </div>
+        </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+

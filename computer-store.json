@@ -1,0 +1,44 @@
+{
+  "computers": [
+    {
+      "id": 1,
+      "model": "Latitude 3500 - 15.6",
+      "brand": "Asus",
+      "type": "Portable",
+      "category": "Bureautique",
+      "buyPrice": 120.88,
+      "sellPrice": 300.1,
+      "dateEnterStock": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "model": "HP ZBook 15 G6",
+      "brand": "HP",
+      "type": "Portable",
+      "category": "Gaming",
+      "buyPrice": 400,
+      "sellPrice": 900,
+      "dateEnterStock": "2020-03-24T12:14:30.472Z",
+      "id": 2
+    },
+    {
+      "model": "Apple MacBook Air 13",
+      "brand": "Apple",
+      "type": "Portable",
+      "category": "Bureautique",
+      "buyPrice": 500,
+      "sellPrice": 999,
+      "dateEnterStock": "2020-03-24T12:15:33.888Z",
+      "id": 3
+    },
+    {
+      "model": "Mon model de test e2e",
+      "brand": "Dell",
+      "type": "Portable",
+      "category": "Bureautique",
+      "buyPrice": 200,
+      "sellPrice": 400,
+      "dateEnterStock": "2020-03-24T12:16:42.596Z",
+      "id": 4
+    }
+  ]
+}
